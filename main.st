@@ -47,7 +47,7 @@ riders do: [:r | Transcript show: 'Rider ID: ', r id, ', Name: ', r name, ', pas
         driverName := FileStream stdin nextLine.
         Transcript show: 'Enter driver password: '; flush.
         driverPassword := FileStream stdin nextLine.
-        driver := drivers detect: [:d | (d id = driverName) and: (d password = driverPassword)] ifNone: [nil].
+        driver := drivers detect: [:d | (d id = driverName) and: [d password = driverPassword]] ifNone: [nil].
         driver ifNotNil: [
             Transcript show: 'Welcome, ', driver name, '!'; cr.
             driver displayInfo.
@@ -80,7 +80,7 @@ riders do: [:r | Transcript show: 'Rider ID: ', r id, ', Name: ', r name, ', pas
         riderName := FileStream stdin nextLine.
         Transcript show: 'Enter rider password: '; flush.
         riderPassword := FileStream stdin nextLine.
-         rider := riders detect: [:r | (r id = riderName) and: (r password = riderPassword)] ifNone: [ nil ].        rider ifNotNil: [
+         rider := riders detect: [:r | (r id = riderName) and: [r password = riderPassword]] ifNone: [ nil ].        rider ifNotNil: [
             Transcript show: 'Welcome, ', rider name, '!'; cr.
             Transcript show: 'Do you want to request a ride? (yes/no): '; flush.
             requestRideResponse := FileStream stdin nextLine asLowercase.
